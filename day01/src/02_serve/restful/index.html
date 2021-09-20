@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>主页!</h1>
+  <input type="text" id="dataInput" placeholder="请输入内容">
+  <button>保存</button>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const input = document.querySelector('#dataInput');
+    axios.get('http://localhost:3000/api/user/')
+      .then(res => {
+        if (res.status !== 200) {
+          console.log('error');
+          return;
+        }
+        console.log(res);
+        res = res.data;
+        const ul = document.createElement('ul')
+        res.forEach(data => {
+          const li = document.createElement('li');
+          li.innerHTML = `realName=${data.realName} mobile=${data.mobile}`;
+          ul.append(li);
+        });
+        document.body.append(ul);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  </script>
+</body>
+
+</html>
