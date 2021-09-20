@@ -3,12 +3,10 @@ console.log("command hello cli");
 const program = require('commander');
 // 策略模式
 program.version(require('../package.json').version);
-try {
-  program.command('init <name>')
+program.command('init <name>')
   .description('init project')
   .action(require('../lib/init'));
-}catch(err) {
-  console.log("err");
-  console.log(err);
-}
+program.command('refresh')
+  .description('refresh routers...')
+  .action(require('../lib/refresh'));
 program.parse(process.argv);
