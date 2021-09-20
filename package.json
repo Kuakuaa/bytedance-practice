@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Kuakuaa/bytedance-practice/issues"
   },
-  "homepage": "https://github.com/Kuakuaa/bytedance-practice#readme"
+  "homepage": "https://github.com/Kuakuaa/bytedance-practice#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
