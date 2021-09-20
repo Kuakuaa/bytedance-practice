@@ -5,7 +5,8 @@ const handlebars = require('handlebars');
 const chalk = require('chalk');
 module.exports = async () => {
   // 获取列表
-  const list = fs.readdirSync('./src/views')
+  // console.log(fs.readdirSync("./vue-template/src/views"));
+  const list = fs.readdirSync("./vue-template/src/views")
     .filter(v => v !== "Home.vue")
     .map(v => ({
       name: v.replace('.vue', '').toLowerCase(),
@@ -13,9 +14,9 @@ module.exports = async () => {
     }));
 
   // 生成路由定义
-  compile({list},'./src/router.js','./vue-template/router.js.hbs');
+  compile({ list }, './vue-template/src/router.js', './vue-template/template/router.js.hbs');
   // 生成菜单
-  compile({list},'./src/App.vue','./vue-template/App.vue.hbs');
+  compile({ list }, './vue-template/src/App.vue', './vue-template/template/App.vue.hbs');
 
   /**
    * 
@@ -28,7 +29,7 @@ module.exports = async () => {
       const content = fs.readFileSync(templatePath).toString();
       const result = handlebars.compile(content)(meta);
       fs.writeFileSync(filePath, result);
-
+      console.log(chalk.green(`${filePath} 创建成功`));
     }
   }
 }

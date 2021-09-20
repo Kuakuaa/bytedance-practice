@@ -16,9 +16,7 @@ const spawn = async (...args) => {
     // 输出流 子进程 合并到主进程
     proc.stdout.pipe(process.stdout);
     proc.stderr.pipe(process.stderr);
-    console.log(6666666666666);
     proc.on('close', () => {
-      console.log(77777777777);
       resolve();
     })
   })
@@ -30,9 +28,8 @@ module.exports = async name => {
   const data = await figlet('Kuakuaa\'s init');
   log(data);
 
-
   // 项目模板
-  log('项目模板'+name);
+  log('项目模板' + name);
   // await clone('github:su37josephxia/vue-template',name);
   // 下载依赖 npm i
   // 子进程
@@ -45,9 +42,6 @@ module.exports = async name => {
     npm run serve
   ==============================
   `))
-  open('http://localhost:3001');
+  open('http://localhost:8080');
   await spawn(process.platform === "win32" ? "npm.cmd" : 'npm', ['run', 'serve'], { cwd: `./${name}` });
-  // await spawn('npm', ['run', 'serve'], { cwd: `./${name}` });
-  // await spawn('npm.cmd', ['run', 'serve'], { cwd: `./${name}` });
-  console.log(888888888888);
 }
