@@ -3,6 +3,8 @@ const { get } = require("mongoose");
 module.exports = {
   async init(ctx, next) {
     // 根据参数 list 找模型
+    console.log(ctx.app);
+    console.log(ctx.params.list);
     const model = ctx.app.$model[ctx.params.list];
     if (model) {
       ctx.list = model;

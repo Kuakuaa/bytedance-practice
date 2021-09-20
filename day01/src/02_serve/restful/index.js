@@ -16,6 +16,6 @@ app.use(bodyParser());
 const restful = require('./framework/router');
 app.use(restful);
 
-app.listen(300, () => {
+app.listen(3000, () => {
   console.log("Server at 3000");
 })
