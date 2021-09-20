@@ -1,1 +1,2 @@
-# bytedance-practice
+# 字节青训营代码和笔记
+
