@@ -8,15 +8,15 @@ import path from 'path';
 // const prettier = require("prettier");
 
 export function createPackageTemplate(config) {
-  const __dirname = fileURLToPath(import.meta.url);
 
-  const template = fs.readFileSync('./template/package.ejs', 'utf-8');
+  const template = fs.readFileSync(path.resolve('bin/template/package.ejs').replace(/\\/g,'/'), 'utf-8');
   
   const code = ejs.render(template, {
-    router: config.middleware.router,
-    static: config.middleware.static,
+    router: config.middleware.indexOf('koaRouter') !== -1,
+    static: config.middleware.indexOf('koaStatic') !== -1,
     packageName: config.packageName
   })
+  // return code;
   return prettier.format(code, {
     parser: "json"
   })

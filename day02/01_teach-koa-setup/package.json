@@ -8,7 +8,7 @@
     "teach-setup-koa": "./bin/common.js"
   },
   "scripts": {
-    "del": "rd test",
+    "del": "rd /s/q test",
     "run": "rd /s/q test&&node index.js"
   },
   "author": "",

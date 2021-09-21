@@ -38,15 +38,19 @@ const inputConfig = {
 }
 
 // 核心自动化思维
-// 1.创建了文件夹 (项目名)
-fs.mkdirSync('test');
-
+// 1.删除文件夹，并创建新文件夹 (项目名)
+if (fs.existsSync('test')) {
+  await execa('npm run del');
+  fs.mkdirSync('test');
+} else {
+  fs.mkdirSync('test');
+}
 // 2. 创建了 index.js
-fs.writeFileSync(getRootPath() + "/index.js", createIndexTemplate(inputConfig));
+fs.writeFileSync(getRootPath() + "/index.js", createIndexTemplate());
 
 // 3.创建了 package.json
 // 练习点：基于数据生成 package.json
-fs.writeFileSync(getRootPath() + '/package.json', createPackageTemplate(inputConfig));
+fs.writeFileSync(getRootPath() + '/package.json', createPackageTemplate(answer));
 
 // 4.安装依赖
 // TODO package -> yarn
