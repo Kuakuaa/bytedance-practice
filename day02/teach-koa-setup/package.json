@@ -1,0 +1,23 @@
+{
+  "name": "teach-koa-setup",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "teach-setup-koa": "./bin/index.js"
+  },
+  "scripts": {
+    "del": "rd test",
+    "run": "rd /s/q test&&node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "execa": "^5.1.1",
+    "inquirer": "^8.1.5",
+    "koa": "^2.13.1",
+    "prettier": "^2.4.1"
+  }
+}
